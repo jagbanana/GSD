@@ -1,0 +1,38 @@
+# GSD .gitignore
+
+# Session logs (optional - may want to track these)
+# Uncomment the line below to ignore session logs
+# sessions/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-*
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Temporary files
+*.tmp
+*.temp
+
+# Archive folder (if you create one for old items)
+archive/
+
+# Personal notes (if you have any outside the structure)
+personal/
+scratch/
+drafts/
+
+# Claude Code internal files (if any)
+.claude-cache/

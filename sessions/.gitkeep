@@ -1,0 +1,17 @@
+# Sessions Directory
+
+This directory contains session logs.
+
+Files are created/updated by:
+- `/gsd` when starting a session
+- `/end` when ending a session
+
+File naming: `YYYY-MM-DD.md`
+
+Example: `2026-01-28.md`
+
+Each file logs:
+- Session start/end times
+- Portfolio health snapshots
+- Items surfaced during the session
+- Activities performed

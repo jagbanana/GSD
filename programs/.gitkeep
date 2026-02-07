@@ -1,0 +1,11 @@
+# Programs Directory
+
+This directory contains one markdown file per program.
+
+Files are created by:
+- `/setup` during initial configuration
+- `/newprogram` when adding new programs
+
+File naming: `[program-slug].md` (lowercase, hyphens, no spaces)
+
+See `templates/program-template.md` for the expected format.

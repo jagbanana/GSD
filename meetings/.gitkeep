@@ -1,0 +1,11 @@
+# Meetings Directory
+
+This directory contains meeting notes.
+
+Files are created by `/debrief [program]` after meetings.
+
+File naming: `YYYY-MM-DD-[program-slug].md`
+
+Example: `2026-01-28-marketing.md`
+
+See `templates/meeting-template.md` for the expected format.
