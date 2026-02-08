@@ -2,11 +2,17 @@
 
 GSD is a Portfolio Management Assistant system for senior leaders. It is built to run entirely within [Claude Code](https://claude.ai/claude-code). It provides visibility into your programs, initiatives, milestones, risks, and decisions—without requiring you to learn another tool or maintain another system.
 
+- Keep track of a large portfolio of dissimilar projects
+- Run more effective meetings
+- Free your mind to focus on strategy
+
 Interact with GSD in natural language, just like your own a human Portfolio Manager.
 
 All you need to do is download the files in this repo, open Claude Code in the folder, and type `/gsd` to get started.
 
 GSD runs **100% within Claude Code**. No MCP servers, no external services, no API keys, no additional configuration. Just Claude Code and these files.
+
+![GSD Initialized](screenshots/gsd1.png)
 
 ## What GSD Is (and Isn't)
 
@@ -19,6 +25,8 @@ GSD operates at the **leadership level**:
 - Surface what needs your attention across your portfolio
 - Generate executive summaries when you need them
 
+![GSD Items Needing Attention](screenshots/gsd2.png)
+
 ## How It Works
 
 ### Programs and Initiatives
@@ -29,6 +37,8 @@ GSD operates at the **leadership level**:
 
 GSD assigns each program a **number** (1, 2, 3...) and each initiative a **letter** (a, b, c...) for quick reference. You can say "brief me on 1" or "what's happening with 2b" instead of remembering slugs.
 
+![GSD Upcoming Milestones](screenshots/gsd3.png)
+
 ### Meeting-Centric Workflow
 
 GSD is built around your regular check-ins:
@@ -38,6 +48,14 @@ GSD is built around your regular check-ins:
 3. **After the meeting**: Run `/debrief 1` to capture updates, decisions, and action items
 
 GSD updates program files, logs decisions, and recalculates health automatically.
+
+![GSD Meeting Brief](screenshots/gsd4.png)
+
+![GSD Meeting Brief Continued](screenshots/gsd5.png)
+
+![GSD Meeting Brief Continued](screenshots/gsd6.png)
+
+![GSD Meeting Brief Continued](screenshots/gsd7.png)
 
 ### Health Scores
 
@@ -52,6 +70,10 @@ Each program gets a health score (🟢 Green, 🟡 Yellow, 🔴 Red) calculated 
 | Dependency health | 10% |
 
 You can override calculated health with your own assessment when needed.
+
+![GSD Portfolio Review](screenshots/gsd8.png)
+
+![GSD Portfolio Summary](screenshots/gsd9.png)
 
 ## Use Cases
 
@@ -154,6 +176,8 @@ gsd/
 - **Log decisions liberally.** The rationale matters more than the decision itself. When someone asks "why did we do X?" in six months, you'll have the answer.
 - **Let health scores guide attention.** Yellow and red programs need your focus. Green programs are fine until they're not.
 - **Trust the system.** GSD maintains state across sessions. Pick up where you left off.
+- **Manage the context window.** You need to manage context when using LLMs, and that's true for GSD. Use the `/clear` command after running `/end`. For most users, clearing context once per day will be sufficient, but if GSD is starting to get confused, it might be time to clear. 
+- **Want to modifty?** Your workflow may differ. GSD is simple to tweak; just tell Claude Code what you want and it can modify GSD's underlying system fairly easily. 
 
 ## License
 

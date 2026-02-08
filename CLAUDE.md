@@ -41,7 +41,7 @@ GSD is NOT a task manager. It tracks programs at the leadership level:
 
 Each program is assigned a unique number (1, 2, 3, etc.) for quick reference:
 - Programs are numbered in the order they appear in the portfolio summary
-- You can reference programs by **number** (e.g., `/brief 1`) or **slug** (e.g., `/brief zmanda-marketing`)
+- You can reference programs by **number** (e.g., `/brief 1`) or **slug** (e.g., `/brief program-blue-marketing`)
 - Both work identically - use whichever is more convenient
 - Numbers are displayed in all portfolio views and outputs
 
@@ -62,7 +62,7 @@ Each initiative within a program is assigned a letter (a, b, c, etc.) for quick 
 
 GSD is built around your program check-ins:
 
-1. **Before meetings:** Run `/brief [#|slug]` to prepare (e.g., `/brief 1` or `/brief zmanda-marketing`)
+1. **Before meetings:** Run `/brief [#|slug]` to prepare (e.g., `/brief 1` or `/brief program-blue-marketing`)
 2. **During meetings:** Have structured + open discussion
 3. **After meetings:** Run `/debrief [#|slug]` to capture updates
 
@@ -275,7 +275,7 @@ name: [Display name]
 number: [Assigned program number, 1-N]
 slug: [file-name-format]
 function: [Marketing|Customer Engagement|BD|etc.]
-line_of_business: [Services|Zmanda|both]
+line_of_business: [Services|Program-Blue|both]
 type: [ongoing|time-bound]
 owner: [Name of day-to-day owner]
 meeting_cadence: [e.g., "Tuesdays, Fridays"]
@@ -320,7 +320,7 @@ The board is generated fresh each time with current data.
 
 5. **Keep executive summaries tight:** The executive summary in `/portfolio` should be scannable in under 2 minutes. Concise bullets, not paragraphs.
 
-6. **Respect program identifiers:** Programs can be referenced by number (1, 2, 3, etc.) or slug (zmanda-marketing). When user provides a number, look up the corresponding program by reading all program files and matching the `number` field. If ambiguous, ask for clarification.
+6. **Respect program identifiers:** Programs can be referenced by number (1, 2, 3, etc.) or slug (program-blue-marketing). When user provides a number, look up the corresponding program by reading all program files and matching the `number` field. If ambiguous, ask for clarification.
 
 ---
 

@@ -35,7 +35,7 @@ Prompt for each required field:
 > [Waiting for user input]
 
 **Line of Business:**
-(Which business lines does this support? e.g., Services, Zmanda, or both)
+(Which business lines does this support? e.g., Services, Program-Blue, or both)
 > [Waiting for user input]
 
 **Type:**

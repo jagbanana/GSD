@@ -49,7 +49,7 @@ Output the following help information:
 - `/decision bd-partners` — Log a decision for BD program
 
 **Quick Reference:**
-- Programs use **numbers** (1, 2, 3) or **slugs** (zmanda-marketing)
+- Programs use **numbers** (1, 2, 3) or **slugs** (program-blue-marketing)
 - Initiatives use **letters** within programs (a, b, c)
 - Combine them: `1a` = Program 1, Initiative a
 - Run `/tree` to see all programs and initiatives with their codes
