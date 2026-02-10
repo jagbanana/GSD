@@ -4,6 +4,7 @@ GSD is a Portfolio Management Assistant system for senior leaders. It is built t
 
 - Keep track of a large portfolio of dissimilar projects
 - Run more effective meetings
+- Track the details and results of critical decisions
 - Free your mind to focus on strategy
 
 Interact with GSD in natural language, just like your own a human Portfolio Manager.
@@ -34,6 +35,8 @@ GSD operates at the **leadership level**:
 **Programs** are the major areas you oversee—ongoing functions (Marketing, Customer Success) or time-bound efforts (Product Launch, System Migration). Each program has an owner who runs it day-to-day and reports to you.
 
 **Initiatives** are the major workstreams within each program. They move through stages: Backlog → Evaluation → Planning → In Flight → Complete.
+
+![GSD Organizational Structure](screenshots/gsdscope.png)
 
 GSD assigns each program a **number** (1, 2, 3...) and each initiative a **letter** (a, b, c...) for quick reference. You can say "brief me on 1" or "what's happening with 2b" instead of remembering slugs.
 
