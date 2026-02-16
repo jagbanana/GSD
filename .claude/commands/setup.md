@@ -53,8 +53,9 @@ Confirm or adjust:
 
 Create:
 1. Update `state/portfolio-summary.md` with user profile and program list
-2. Create a program file for each program in `programs/[slug].md` using the template
-3. Initialize `state/decision-log.md` and `state/action-items.md`
+2. Create a program file for each program in `programs/[slug].md` using the template (including frontmatter tags)
+3. Ensure `decisions/` folder exists (create `.gitkeep` if empty)
+4. Initialize `state/action-items.md`
 
 ### 6. Confirmation
 
@@ -68,8 +69,13 @@ Show:
 **Files Created:**
 - programs/[slug].md for each program
 - state/portfolio-summary.md
-- state/decision-log.md (initialized)
+- decisions/ folder (ready for atomic decision files)
 - state/action-items.md (initialized)
+
+**Obsidian Integration:**
+- Open this folder as a vault in Obsidian for visual navigation and dashboards
+- Install Dataview and Templater community plugins when prompted
+- See README.md for full Obsidian setup instructions
 
 **Next Steps:**
 1. Run `/gsd` to start your first session

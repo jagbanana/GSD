@@ -49,10 +49,16 @@ Output the following help information:
 - `/decision bd-partners` — Log a decision for BD program
 
 **Quick Reference:**
-- Programs use **numbers** (1, 2, 3) or **slugs** (program-blue-marketing)
+- Programs use **numbers** (1, 2, 3) or **slugs** (program-a-marketing)
 - Initiatives use **letters** within programs (a, b, c)
 - Combine them: `1a` = Program 1, Initiative a
 - Run `/tree` to see all programs and initiatives with their codes
+
+**Obsidian Integration:**
+- This folder is also an Obsidian vault — open it in Obsidian for visual navigation
+- Decisions are stored as individual files in `decisions/` (view via `decisions/index.md`)
+- All GSD files use `[[wikilinks]]` for cross-referencing
+- Install Dataview and Templater plugins for dashboards and templates
 
 Want details on a specific command? Just ask!
 ```

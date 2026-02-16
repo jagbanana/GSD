@@ -76,11 +76,16 @@ Update the following files:
 - Add/update/resolve risks
 - Update dependency statuses
 - Add entry to "Recent Updates" section with today's date
+- Include `[[YYYY-MM-DD-$ARGUMENTS]]` wikilink in the new update entry
+- If there are more than 3 entries in "Recent Updates", remove the oldest
 - Update `last_updated` in frontmatter
 
-**Decision log (`state/decision-log.md`):**
-- For any decisions made, create full decision entry
-- Include: date, program, decision, made by, stakeholders, rationale, impact
+**Decisions (`decisions/`):**
+- For each decision made, create an atomic decision file: `decisions/DEC-NNN-slug.md`
+- List `decisions/` to find the next available number
+- Include YAML frontmatter: id, title, program, date, made_by, stakeholders, revisit_date, tags
+- Include body sections: Decision, Rationale, Impact, Revisit
+- Include `[[program-slug]]` wikilink in the decision body
 - Ask user for rationale/impact if not provided
 
 **Action items (`state/action-items.md`):**
@@ -88,6 +93,9 @@ Update the following files:
 
 **Meeting notes (`meetings/[YYYY-MM-DD]-$ARGUMENTS.md`):**
 - Create meeting notes file with full capture
+- Include YAML frontmatter: program, date, attendees, type, tags
+- Include `[[program-slug]]` wikilink in the Program field
+- Include `[[DEC-NNN-slug]]` wikilinks for any decisions logged
 
 ### 5. Recalculate Health
 
@@ -103,8 +111,8 @@ After updates, recalculate program health and note any change.
 - [Risk]: [Status change]
 - [Milestone]: [Status change]
 
-**Logged to Decision Log:**
-- "[Decision summary]" (see state/decision-log.md)
+**Decisions Logged:**
+- "[Decision summary]" → [[DEC-NNN-slug]]
 
 **Action Items Created:**
 - [ID]: [Action] ([Owner], [Due])

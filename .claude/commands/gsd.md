@@ -9,6 +9,8 @@ Begin a GSD session with a portfolio overview and surface items needing attentio
 - Note the current date and day of week
 - Read `state/portfolio-summary.md` to get user profile
 - Read all program files from `programs/` directory
+- List files in `decisions/` and read decisions from the last 7 days (by `date` in frontmatter)
+- Read `state/action-items.md`
 
 ### 2. Calculate Health
 

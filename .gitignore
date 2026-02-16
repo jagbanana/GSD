@@ -36,3 +36,18 @@ drafts/
 
 # Claude Code internal files (if any)
 .claude-cache/
+
+# Obsidian - User-specific files (don't track)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/hotkeys.json
+.obsidian/core-plugins.json
+.obsidian/core-plugins-migration.json
+.obsidian/graph.json
+.obsidian/bookmarks.json
+.obsidian/canvas.json
+
+# Obsidian - Plugin binaries (user installs via community browser)
+.obsidian/plugins/*/manifest.json
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css

@@ -19,12 +19,14 @@ Append to `sessions/[YYYY-MM-DD].md`:
 - Session end time
 - Summary of activities
 - Any items flagged for next session
+- Include `[[program-slug]]` wikilinks when referencing programs reviewed
+- Include `[[DEC-NNN-slug]]` wikilinks when referencing decisions logged
 
 ### 3. Verify State
 
 Check that all changes have been persisted:
 - Program files updated
-- Decision log current
+- Decision files created in `decisions/`
 - Action items captured
 - Portfolio summary reflects current state
 

@@ -3,7 +3,7 @@ name: [Program Name]
 number: [Program Number - assigned automatically]
 slug: [program-slug]
 function: [Function]
-line_of_business: [Services, Program-Blue, or comma-separated list]
+line_of_business: [Services, Program-A, or comma-separated list]
 type: [ongoing|time-bound]
 owner: [Owner Name]
 meeting_cadence: [e.g., "Tuesdays, Fridays"]
@@ -14,6 +14,10 @@ health_override_note: null
 okrs:
   - [Related OKR 1]
   - [Related OKR 2]
+tags:
+  - program
+  - [function-lowercase]
+  - [lob-lowercase]
 ---
 
 # [Program Name]
@@ -80,10 +84,13 @@ Update status regularly to catch blockers early.
 ### [YYYY-MM-DD]
 - [Update item]
 - [Update item]
+- See [[YYYY-MM-DD-program-slug]]
 
 <!--
 Add updates after each meeting or significant event.
-Keep entries brief - details go in meeting notes.
+Keep only the last 2-3 updates here; older updates live in meeting notes.
+Each update should link to the full meeting note with [[wikilinks]].
+When adding a new update, remove the oldest if there are more than 3.
 Most recent updates at top.
 -->
 

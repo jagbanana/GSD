@@ -1,4 +1,16 @@
-# Meeting: [Program Name]
+---
+program: [program-slug]
+date: [YYYY-MM-DD]
+attendees:
+  - [Name 1]
+  - [Name 2]
+type: [Check-in|Review|Planning|Ad-hoc]
+tags:
+  - meeting
+  - [program-slug]
+---
+
+# Meeting: [[program-slug]]
 
 **Date:** [YYYY-MM-DD]
 **Attendees:** [Names]
@@ -60,9 +72,10 @@
 
 ### Decisions Made
 
-<!-- Each decision will be logged separately to decision-log.md -->
+<!-- Each decision is logged as an atomic file in decisions/ -->
 
 **Decision:** [What was decided]
+- **Logged as:** [[DEC-NNN-slug]]
 - **Made By:** [Name]
 - **Rationale:** [Why this choice]
 - **Impact:** [What changes as a result]

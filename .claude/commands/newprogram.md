@@ -35,7 +35,7 @@ Prompt for each required field:
 > [Waiting for user input]
 
 **Line of Business:**
-(Which business lines does this support? e.g., Services, Program-Blue, or both)
+(Which business lines does this support? e.g., Services, Program-A, or both)
 > [Waiting for user input]
 
 **Type:**
@@ -107,6 +107,10 @@ health_override: null
 okrs:
   - [OKR 1]
   - [OKR 2]
+tags:
+  - program
+  - [function-lowercase]
+  - [lob-lowercase]
 ---
 
 # [Program Name]

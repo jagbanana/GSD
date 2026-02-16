@@ -69,26 +69,51 @@ Show the complete decision record for confirmation:
 Does this look correct? (yes/edit/cancel)
 ```
 
-### 4. Write to Decision Log
+### 4. Create Decision File
 
-Append to `state/decision-log.md`:
+1. List files in `decisions/` directory to find the highest existing `DEC-NNN` number
+2. Increment to get next number (or start at 001 if none exist)
+3. Generate slug from decision summary (lowercase, hyphenated, max 5 words)
+4. Create file `decisions/DEC-[NNN]-[slug].md`:
 
 ```markdown
 ---
+id: DEC-[NNN]
+title: [Decision Summary]
+program: [program-slug]
+date: [YYYY-MM-DD]
+made_by: [Name]
+stakeholders:
+  - [Name 1]
+  - [Name 2]
+revisit_date: [Date or null]
+tags:
+  - decision
+  - [program-slug]
+---
 
-## [YYYY-MM-DD]: [Decision Summary]
+# DEC-[NNN]: [Decision Summary]
 
-**Program:** [Program Name]
-**Decision:** [Full decision text]
+**Program:** [[program-slug]]
+**Date:** [YYYY-MM-DD]
 **Made By:** [Name]
 **Stakeholders:** [Names]
-**Rationale:**
+
+## Decision
+
+[Full decision text]
+
+## Rationale
+
 [Rationale text - can be multiple lines/bullets]
 
-**Impact:**
+## Impact
+
 [Impact text - can be multiple lines/bullets]
 
-**Revisit Date:** [Date or "N/A"]
+## Revisit
+
+[Date and conditions, or "N/A"]
 ```
 
 ### 5. Update Program File
@@ -97,8 +122,10 @@ Add reference to the program's "Recent Updates" section:
 
 ```markdown
 ### [YYYY-MM-DD]
-- **Decision:** [Brief summary] (see decision-log.md)
+- **Decision:** [Brief summary] — [[DEC-NNN-slug]]
 ```
+
+If there are already 3 entries in Recent Updates, remove the oldest one.
 
 ### 6. Confirmation
 
@@ -119,7 +146,7 @@ Add reference to the program's "Recent Updates" section:
 
 **Revisit:** [Date or "N/A"]
 
-Logged to state/decision-log.md and referenced in programs/$ARGUMENTS.md.
+Logged to decisions/DEC-[NNN]-[slug].md and referenced in programs/$ARGUMENTS.md.
 ```
 
 ## When to Use This Command

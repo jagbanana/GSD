@@ -1,0 +1,9 @@
+{
+  "renderNullAs": "—",
+  "taskCompletionTracking": false,
+  "enableDataviewJs": false,
+  "enableInlineDataview": true,
+  "enableInlineDataviewJs": false,
+  "tableIdColumnName": "File",
+  "tableGroupColumnName": "Group"
+}

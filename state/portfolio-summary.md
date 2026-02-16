@@ -45,6 +45,39 @@
 
 ---
 
+## Obsidian Dashboard
+
+> The following sections render as live dashboards in Obsidian with the Dataview plugin.
+
+### Programs Overview (Dataview)
+
+```dataview
+TABLE health, owner, meeting_cadence AS "Cadence", last_updated AS "Updated"
+FROM "programs"
+SORT number ASC
+```
+
+### Recent Decisions (Dataview)
+
+```dataview
+TABLE program, date, made_by
+FROM "decisions"
+WHERE id != null
+SORT date DESC
+LIMIT 10
+```
+
+### Upcoming Revisit Dates (Dataview)
+
+```dataview
+TABLE program, title, revisit_date
+FROM "decisions"
+WHERE revisit_date != null AND revisit_date >= date(today)
+SORT revisit_date ASC
+```
+
+---
+
 ## Quick Reference
 
 ### Available Commands

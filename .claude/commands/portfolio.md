@@ -7,7 +7,7 @@ Comprehensive portfolio review with executive summary.
 ### 1. Load All Data
 
 Read all program files from `programs/` directory.
-Read `state/decision-log.md` for recent decisions.
+List and read files in `decisions/` folder. For the "Decisions This Week" section, filter to decisions with `date` in the last 7 days.
 Read `state/action-items.md` for open action items.
 Read `state/portfolio-summary.md` for organizational context (OKRs, lines of business).
 
@@ -56,8 +56,8 @@ Calculate overall health for each line of business.
 (If none: "No significant risks or concerns at this time.")
 
 **Decisions Made This Week:**
-- [Decision summary] — [One sentence on why it matters]
-- [Decision summary] — [One sentence on why it matters]
+- [Decision summary] — [[DEC-NNN-slug]] — [One sentence on why it matters]
+- [Decision summary] — [[DEC-NNN-slug]] — [One sentence on why it matters]
 (If none: "No major decisions this week.")
 
 **Items Needing Your Attention:**
@@ -158,7 +158,7 @@ The executive summary is the top section and should be scannable in under 2 minu
 - Sort by due date
 
 **Decisions This Week:**
-- Filter decision log to entries from the last 7 days
+- Filter `decisions/` folder to files with `date` in the last 7 days
 
 ### 7. Follow-up Support
 

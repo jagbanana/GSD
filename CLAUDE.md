@@ -41,7 +41,7 @@ GSD is NOT a task manager. It tracks programs at the leadership level:
 
 Each program is assigned a unique number (1, 2, 3, etc.) for quick reference:
 - Programs are numbered in the order they appear in the portfolio summary
-- You can reference programs by **number** (e.g., `/brief 1`) or **slug** (e.g., `/brief program-blue-marketing`)
+- You can reference programs by **number** (e.g., `/brief 1`) or **slug** (e.g., `/brief program-a-marketing`)
 - Both work identically - use whichever is more convenient
 - Numbers are displayed in all portfolio views and outputs
 
@@ -62,7 +62,7 @@ Each initiative within a program is assigned a letter (a, b, c, etc.) for quick 
 
 GSD is built around your program check-ins:
 
-1. **Before meetings:** Run `/brief [#|slug]` to prepare (e.g., `/brief 1` or `/brief program-blue-marketing`)
+1. **Before meetings:** Run `/brief [#|slug]` to prepare (e.g., `/brief 1` or `/brief program-a-marketing`)
 2. **During meetings:** Have structured + open discussion
 3. **After meetings:** Run `/debrief [#|slug]` to capture updates
 
@@ -107,17 +107,25 @@ gsd/
 ├── programs/                   # One file per program
 │   ├── [program-slug].md
 │   └── ...
+├── decisions/                  # One file per decision (atomic)
+│   ├── index.md                # Dataview-powered decision dashboard
+│   └── DEC-NNN-slug.md         # Individual decision files
 ├── state/
 │   ├── portfolio-summary.md    # Aggregated portfolio view
-│   ├── decision-log.md         # All decisions across programs
+│   ├── decision-log.md         # Legacy redirect → see decisions/
 │   └── action-items.md         # Open action items
 ├── meetings/                   # Meeting notes archive
 │   └── YYYY-MM-DD-[program].md
 ├── templates/
 │   ├── program-template.md
-│   └── meeting-template.md
+│   ├── meeting-template.md
+│   └── decision-template.md    # Template for atomic decisions
 ├── .claude/
 │   └── commands/               # Slash commands
+├── .obsidian/                  # Obsidian vault configuration
+│   ├── app.json
+│   ├── community-plugins.json
+│   └── plugins/                # Plugin configs (not binaries)
 └── sessions/
     └── YYYY-MM-DD.md           # Session logs
 ```
@@ -253,7 +261,7 @@ Then show:
 | Action | Why Confirm |
 |--------|-------------|
 | Overwriting program files | Data could be lost |
-| Modifying decision log | Audit trail integrity |
+| Modifying existing decision files | Audit trail integrity |
 | Bulk updates to multiple programs | Ensure accuracy |
 | Generating portfolio review | Verify before sharing |
 
@@ -275,7 +283,7 @@ name: [Display name]
 number: [Assigned program number, 1-N]
 slug: [file-name-format]
 function: [Marketing|Customer Engagement|BD|etc.]
-line_of_business: [Services|Program-Blue|both]
+line_of_business: [Services|Program A|both]
 type: [ongoing|time-bound]
 owner: [Name of day-to-day owner]
 meeting_cadence: [e.g., "Tuesdays, Fridays"]
@@ -284,6 +292,7 @@ health: [green|yellow|red]
 health_override: [null or green|yellow|red]
 health_override_note: [Rationale if override set]
 okrs: [List of related organizational goals]
+tags: [program, function-tag, lob-tag]
 ```
 
 ---
@@ -312,7 +321,7 @@ The board is generated fresh each time with current data.
 
 1. **Be proactive about health:** When showing program status, always explain what's driving the health score.
 
-2. **Protect the decision log:** Decisions are critical audit trail. Never modify existing decisions; only append new ones.
+2. **Protect decisions:** Decisions are a critical audit trail. Each decision is an atomic file in `decisions/`. Never modify an existing decision file. To correct a decision, create a new superseding decision that references the original.
 
 3. **Guide structured capture:** During `/debrief`, walk through each section methodically. Don't let important updates get lost.
 
@@ -320,7 +329,144 @@ The board is generated fresh each time with current data.
 
 5. **Keep executive summaries tight:** The executive summary in `/portfolio` should be scannable in under 2 minutes. Concise bullets, not paragraphs.
 
-6. **Respect program identifiers:** Programs can be referenced by number (1, 2, 3, etc.) or slug (program-blue-marketing). When user provides a number, look up the corresponding program by reading all program files and matching the `number` field. If ambiguous, ask for clarification.
+6. **Respect program identifiers:** Programs can be referenced by number (1, 2, 3, etc.) or slug (program-a-marketing). When user provides a number, look up the corresponding program by reading all program files and matching the `number` field. If ambiguous, ask for clarification.
+
+---
+
+## Obsidian Integration
+
+This repository doubles as an Obsidian vault. The `.obsidian/` folder contains vault configuration. Users may view and navigate GSD files in Obsidian alongside using Claude Code. Claude must produce files that work well in both contexts.
+
+### Wikilink Conventions
+
+Use `[[wikilinks]]` when referencing other GSD files. This creates navigable links in Obsidian.
+
+| Reference Type | Wikilink Format | Example |
+|----------------|-----------------|---------|
+| Program | `[[program-slug]]` | `[[marketing]]` |
+| Decision | `[[DEC-NNN-slug]]` | `[[DEC-001-contractor-approval]]` |
+| Meeting note | `[[YYYY-MM-DD-program-slug]]` | `[[2026-01-28-marketing]]` |
+
+**Rules:**
+- Always use wikilinks when referencing other GSD files in markdown content
+- Wikilinks go in the body text, not in YAML frontmatter (frontmatter uses plain strings)
+- Meeting notes link back to their program: `**Program:** [[marketing]]`
+- Meeting notes link to any decisions made: `**Decisions:** [[DEC-003-contractor-approved]]`
+- Program "Recent Updates" entries link to meeting notes: `- See [[2026-01-28-marketing]]`
+
+### Decision File Management
+
+Decisions are stored as atomic files in `decisions/`, not appended to a single log.
+
+**File naming:** `decisions/DEC-NNN-slug.md` where:
+- `NNN` is a zero-padded three-digit number (001, 002, etc.)
+- `slug` is a lowercase-hyphenated summary of the decision (max 5 words)
+
+**Finding the next number:** List files in `decisions/`, find the highest `DEC-NNN` prefix, increment by one. If no decision files exist (only `.gitkeep` and `index.md`), start at `DEC-001`.
+
+**Decision file structure:**
+
+```yaml
+---
+id: DEC-NNN
+title: [Decision title]
+program: [program-slug]
+date: [YYYY-MM-DD]
+made_by: [Name]
+stakeholders:
+  - [Name 1]
+  - [Name 2]
+revisit_date: [YYYY-MM-DD or null]
+tags:
+  - decision
+  - [program-slug]
+---
+```
+
+Body sections: `## Decision`, `## Rationale`, `## Impact`, `## Revisit`
+
+The body should include a `[[program-slug]]` wikilink in the Program line, and the program file's Recent Updates should include a `[[DEC-NNN-slug]]` wikilink.
+
+**Immutability:** Never modify an existing decision file. If a decision is superseded, create a new decision file referencing the original.
+
+### Program File Hygiene
+
+**Recent Updates pruning:**
+- Keep only the last 2-3 updates inline in the "Recent Updates" section
+- Each inline update should include a `[[YYYY-MM-DD-program-slug]]` wikilink to the full meeting note
+- When adding a new update during `/debrief`, if there are already 3 updates, remove the oldest one
+- Older context is not lost — it lives in the meeting notes, accessible via Obsidian backlinks
+
+**Example of a well-maintained Recent Updates section:**
+
+```markdown
+## Recent Updates
+
+### 2026-01-28
+- Website redesign unblocked; contractor approved — [[DEC-003-contractor-approval]]
+- Campaign timeline confirmed for Feb 15 launch
+- See [[2026-01-28-marketing]]
+
+### 2026-01-24
+- Creative concepts presented; selected option B
+- Escalated design resource issue
+- See [[2026-01-24-marketing]]
+```
+
+### Context Management Strategy
+
+Claude should load data selectively to stay within context limits:
+
+**For `/gsd` (session start):**
+1. Read `state/portfolio-summary.md`
+2. Read all program files from `programs/` (frontmatter + full content)
+3. List files in `decisions/` and read only those from the last 7 days (by `date` in frontmatter or filename)
+4. Read `state/action-items.md`
+
+**For `/brief [program]`:**
+1. Read the specific program file
+2. Follow `[[wikilinks]]` in Recent Updates to read the last 2-3 meeting notes from `meetings/`
+3. Search `decisions/` for decisions matching this program (grep frontmatter `program:` field)
+4. Read `state/action-items.md` and filter to this program
+
+**For `/debrief [program]`:**
+1. Read the specific program file
+2. Create meeting note in `meetings/`
+3. If decisions were made, create individual files in `decisions/`
+4. Update program file (initiative status, Recent Updates with wikilinks, prune old updates)
+5. Update `state/action-items.md` if new action items
+
+**For `/portfolio`:**
+1. Read all program files
+2. List and read recent decisions (last 7 days) from `decisions/`
+3. Read `state/action-items.md`
+
+**For `/decision [program]`:**
+1. Read the specific program file
+2. List `decisions/` to find next available number
+3. Create new decision file in `decisions/`
+4. Update program file's Recent Updates with wikilink to new decision
+
+### Tags
+
+Use tags for searchable inline markers in Obsidian:
+
+**Frontmatter tags (in YAML):**
+- Programs: `tags: [program, <function>, <lob>]`
+- Decisions: `tags: [decision, <program-slug>]`
+- Meetings: `tags: [meeting, <program-slug>]`
+
+**Inline tags (in body text):** Use sparingly for important markers:
+- `#risk` — for risk-related content
+- `#blocked` — for blocked items
+- `#milestone` — for milestone events
+- `#action-item` — for action items in meeting notes
+
+### Compatibility Notes
+
+- Claude reads and writes raw markdown files. Dataview queries in files like `decisions/index.md` and `state/portfolio-summary.md` are for Obsidian rendering only; Claude ignores Dataview code blocks.
+- Templater syntax (`<% ... %>`) in template files is for Obsidian use. When Claude creates files from templates, it fills in values directly rather than using Templater expressions.
+- The `.obsidian/` folder is managed by Obsidian. Claude should never read from or write to `.obsidian/`.
 
 ---
 

@@ -1,40 +1,21 @@
 # Decision Log
 
-All major decisions across the portfolio, logged for future reference.
+> **Note:** Decisions are now stored as individual files in the `decisions/` folder.
+> Each decision is a separate file named `DEC-NNN-slug.md` with full YAML frontmatter.
 
-<!--
-Decisions are added via:
-- /decision [program] - standalone decision logging
-- /debrief [program] - decisions made during meetings
+## View Decisions
 
-Each entry includes:
-- Date and summary (as heading)
-- Program
-- Full decision text
-- Who made it
-- Stakeholders consulted
-- Rationale (the "why")
-- Expected impact
-- Optional revisit date
--->
+- **In Obsidian:** Open [[decisions/index]] for a Dataview-powered dashboard
+- **In Claude Code:** Run `/portfolio` or `/brief [program]` to see relevant decisions
+- **Manually:** Browse the `decisions/` folder
+
+## Why Atomic Decisions?
+
+- Each decision is independently linkable via `[[DEC-NNN-slug]]`
+- Obsidian backlinks show which programs and meetings reference each decision
+- Decisions are immutable once created (audit trail integrity)
+- Easier to search and filter by program, date, or stakeholder
 
 ---
 
-## How to Use This Log
-
-1. **Add decisions** using `/decision [program]` or during `/debrief`
-2. **Reference decisions** when context is needed for related work
-3. **Revisit decisions** on their scheduled dates to confirm they're still valid
-4. **Search this file** when you need to recall why something was decided
-
----
-
-## Decisions
-
-<!-- New decisions are added below this line, most recent first -->
-
-*No decisions logged yet. Use `/decision [program]` to log your first decision.*
-
----
-
-*Decision Log - GSD Template*
+*Decision Log - GSD Template (redirects to decisions/ folder)*

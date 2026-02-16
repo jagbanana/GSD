@@ -29,6 +29,8 @@ Extract from the program file:
 - Health factor breakdown
 - Active initiatives with stage, progress, status
 - Recent updates (last 2-3 entries)
+- Follow `[[wikilinks]]` in Recent Updates to load the last 2-3 full meeting notes from `meetings/`
+- Search `decisions/` for files where frontmatter `program:` matches this program
 - Open risks with impact/likelihood/status
 - Pending dependencies
 - Open questions for leadership
@@ -90,6 +92,12 @@ Based on the program state, suggest 3-5 questions:
 ### Open Action Items for This Team
 | Action | Owner | Due |
 |--------|-------|-----|
+
+### Recent Decisions
+| Date | Decision | Reference |
+|------|----------|-----------|
+| [Date] | [Summary] | [[DEC-NNN-slug]] |
+(If none: "No recent decisions for this program.")
 
 ### Suggested Questions for This Meeting
 
