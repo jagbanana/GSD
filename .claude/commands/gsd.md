@@ -28,19 +28,27 @@ Final: >= 0.7 → 🟢 Green, >= 0.4 → 🟡 Yellow, < 0.4 → 🔴 Red
 
 If `health_override` is set, use that instead but note it.
 
-### 3. Identify Items Needing Attention
+### 3. Update Portfolio Summary
+
+Update `state/portfolio-summary.md` with freshly calculated values:
+- Overwrite the **Portfolio Health Summary** table with the current health distribution (Green/Yellow/Red counts and program names)
+- Set `Last Updated` to today's date
+- Update the **Health** column in the **Programs** table to match the freshly calculated health for each program
+
+### 4. Identify Items Needing Attention
 
 - Programs not updated in 7+ days
 - Overdue milestones
 - Open decisions pending
 - High-impact risks without recent updates
+- Action items past their due date
 
-### 4. Identify Upcoming Items
+### 5. Identify Upcoming Items
 
 - Milestones in next 7 days
 - Meetings scheduled (based on cadence and current day)
 
-### 5. Generate Output
+### 6. Generate Output
 
 Format:
 ```
@@ -52,6 +60,11 @@ Good [morning/afternoon], [Name]. It's [Day], [Full Date].
 **Needs Attention:**
 - [#] [Program]: [Issue] ([days] days)
 - ...
+
+**Overdue Action Items ([count]):**
+- [ID]: [Action] ([Program], assigned to [Owner], due [Date])
+- ...
+(Omit this section entirely if no action items are overdue)
 
 **Upcoming This Week:**
 - [Day]: [Milestone] ([#] [Program])
@@ -68,7 +81,7 @@ Good [morning/afternoon], [Name]. It's [Day], [Full Date].
 What would you like to focus on?
 ```
 
-### 6. Session Logging
+### 7. Session Logging
 
 Create or append to `sessions/[YYYY-MM-DD].md` with:
 - Session start time

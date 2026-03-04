@@ -25,6 +25,8 @@
 
 <!-- Program inventory - updated by /setup and /newprogram -->
 
+<!-- Use [[program-slug|Display Name]] wikilinks in the Program column for Obsidian navigation -->
+
 | Program | Slug | Function | Owner | Cadence | Health |
 |---------|------|----------|-------|---------|--------|
 | [None configured] | - | - | - | - | - |

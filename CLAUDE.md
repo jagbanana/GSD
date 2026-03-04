@@ -115,6 +115,7 @@ gsd/
 │   ├── decision-log.md         # Legacy redirect → see decisions/
 │   └── action-items.md         # Open action items
 ├── meetings/                   # Meeting notes archive
+│   ├── archive/                # Compacted meeting notes (>30 days old)
 │   └── YYYY-MM-DD-[program].md
 ├── templates/
 │   ├── program-template.md
@@ -182,8 +183,9 @@ Then execute the session start sequence:
 1. Check the date
 2. Load portfolio summary and all programs
 3. Calculate health scores
-4. Surface items needing attention
-5. Show upcoming milestones and meetings (labeled "Today's Likely Meetings")
+4. Update `state/portfolio-summary.md` with freshly calculated health values
+5. Surface items needing attention (including overdue action items)
+6. Show upcoming milestones and meetings (labeled "Today's Likely Meetings")
 
 End the initialization with:
 ```
@@ -235,6 +237,7 @@ Then show:
 - Session metrics (time elapsed, programs reviewed, decisions logged, etc.)
 - Outstanding items
 - Reminders
+- Update `state/portfolio-summary.md` with current health values
 - Save any pending state changes
 - Update session log
 
@@ -346,6 +349,8 @@ Use `[[wikilinks]]` when referencing other GSD files. This creates navigable lin
 | Program | `[[program-slug]]` | `[[marketing]]` |
 | Decision | `[[DEC-NNN-slug]]` | `[[DEC-001-contractor-approval]]` |
 | Meeting note | `[[YYYY-MM-DD-program-slug]]` | `[[2026-01-28-marketing]]` |
+| Action item (program ref) | `[[program-slug]]` | `[[zmanda-marketing]]` |
+| Action item (source meeting) | `[[YYYY-MM-DD-program-slug]]` | `[[2026-02-18-zmanda-marketing]]` |
 
 **Rules:**
 - Always use wikilinks when referencing other GSD files in markdown content
@@ -353,6 +358,7 @@ Use `[[wikilinks]]` when referencing other GSD files. This creates navigable lin
 - Meeting notes link back to their program: `**Program:** [[marketing]]`
 - Meeting notes link to any decisions made: `**Decisions:** [[DEC-003-contractor-approved]]`
 - Program "Recent Updates" entries link to meeting notes: `- See [[2026-01-28-marketing]]`
+- Action items reference their source program via `[[program-slug]]` wikilink in the Program column
 
 ### Decision File Management
 
@@ -396,6 +402,7 @@ The body should include a `[[program-slug]]` wikilink in the Program line, and t
 - Each inline update should include a `[[YYYY-MM-DD-program-slug]]` wikilink to the full meeting note
 - When adding a new update during `/debrief`, if there are already 3 updates, remove the oldest one
 - Older context is not lost — it lives in the meeting notes, accessible via Obsidian backlinks
+- Meeting notes older than 30 days are automatically archived to `meetings/archive/` during `/end`. The wikilinks in Recent Updates still work because Obsidian resolves wikilinks across the full vault regardless of subfolder.
 
 **Example of a well-maintained Recent Updates section:**
 
@@ -422,10 +429,11 @@ Claude should load data selectively to stay within context limits:
 2. Read all program files from `programs/` (frontmatter + full content)
 3. List files in `decisions/` and read only those from the last 7 days (by `date` in frontmatter or filename)
 4. Read `state/action-items.md`
+5. Update `state/portfolio-summary.md` health table and Programs table with freshly calculated values
 
 **For `/brief [program]`:**
 1. Read the specific program file
-2. Follow `[[wikilinks]]` in Recent Updates to read the last 2-3 meeting notes from `meetings/`
+2. Follow `[[wikilinks]]` in Recent Updates to read the last 2-3 meeting notes from `meetings/` (check `meetings/archive/` if not found in `meetings/`)
 3. Search `decisions/` for decisions matching this program (grep frontmatter `program:` field)
 4. Read `state/action-items.md` and filter to this program
 
@@ -446,6 +454,14 @@ Claude should load data selectively to stay within context limits:
 2. List `decisions/` to find next available number
 3. Create new decision file in `decisions/`
 4. Update program file's Recent Updates with wikilink to new decision
+
+**For `/end` (meeting and action item maintenance):**
+1. List files in `meetings/` (not `meetings/archive/`)
+2. For files older than 30 days (by filename date):
+   - Verify decisions and action items are preserved in their respective stores
+   - Move file to `meetings/archive/`
+3. Remove completed action items older than 30 days from the Recently Completed section in `state/action-items.md`
+4. Report count of archived files and archived action items in session output
 
 ### Tags
 

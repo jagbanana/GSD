@@ -90,6 +90,8 @@ Update the following files:
 
 **Action items (`state/action-items.md`):**
 - Add new action items with ID, action, program, owner, due date, status, created date
+- In the Program column, use `[[program-slug]]` wikilinks instead of plain text program names
+- In the Notes column, include `[[YYYY-MM-DD-program-slug]]` wikilinks to the meeting note where the action item was created
 
 **Meeting notes (`meetings/[YYYY-MM-DD]-$ARGUMENTS.md`):**
 - Create meeting notes file with full capture
